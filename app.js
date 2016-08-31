@@ -9,14 +9,11 @@ app.controller('MessageController', ['$scope','$http', function($scope, $http) {
     ];
 
     $scope.sendMessage = function() {
-
         $scope.successMessage = false;
         $scope.errorMessage = false;
 
         var phoneNo = $scope.countryCode + $scope.mobile;
         var message = $scope.message;
-
-
 
         if ( $scope.mobile.charAt(0) === '0') {
             var phoneNo = $scope.countryCode + $scope.mobile.slice(1);
