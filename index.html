@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" ng-app="csa">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="Prosper Otemuyiwa">
+  <meta name="HandheldFriendly" content="true">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="Yourtube - Directory of Online Videos">
+  <meta name="fragment" content="!">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <base href="/">
+
+  <title>Customer Service Bird App</title>
+  <link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body ng-controller="MessageController">
+  <header class="navbar navbar-default navbar-static-top">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"> Customer Service Bird</a>
+    </div>
+  </header>
+
+  <div class="container">
+       <form name="messageForm" ng-submit="sendMessage()">
+          <div class="col-md-12">
+
+              <div class="form-group">
+                  <label for="hire">Country</label>
+                  <select class="form-control" id="hire" ng-model="countryCode" name="hire">
+                    <option ng-repeat="country in countryList" value="{{ country.value }}">{{ country.name }}</option>
+                  </select>
+              </div>
+
+              <div class="form-group">
+                <label for="address">Mobile Number</label>
+                <input class="form-control" name="mobile" type="text" ng-model="mobile" required>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Message </label>
+                <textarea class="form-control" name="bio" cols="50" rows="10" ng-model="message" id="bio" required>
+                </textarea>
+              </div>
+
+               <!-- Save Changes Form Input -->
+              <div class="form-group">
+                <button class="form-control btn btn-block btn-info" ng-disabled="messageForm.$invalid" type="submit">Send Message</button>
+              </div>
+          </div>
+        </form>
+
+        <div class="col-md-12" ng-show="successMessage">
+           <br/>
+           <span class="alert alert-success"> Message sent successfully </span>
+        </div>
+
+        <div class="col-md-12" ng-show="errorMessage">
+           <span class="alert alert-danger"> Server error...Please try again or contact the Engineer </span>
+        </div>
+  </div>
+</body>
+</html>
